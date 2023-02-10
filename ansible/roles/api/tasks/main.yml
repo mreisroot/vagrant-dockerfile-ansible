@@ -1,0 +1,15 @@
+---
+- name: Fazer build da imagem da API
+  docker_image:
+    name: viacep
+    build:
+      path: /ansible/roles/api/files/
+    source: build
+
+- name: Executar container da imagem da API
+  docker_container:
+    name: viacep-docker
+    image: viacep
+    detach: yes
+    published_ports: 8080:80
+...
